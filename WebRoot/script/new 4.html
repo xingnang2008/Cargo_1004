@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>测试生成图片</title>
+<script type="text/javascript" src="./jquery-easyui-1.4.3/jquery.min.js" ></script>
+<script src="./html2canvas-master/dist/html2canvas.js" />
+
+<script language="javascript">
+ $(function(){
+	$("#btnSave").click(function(){
+		html2canvas(document.body, { 
+			allowTaint: true, 
+			taintTest: false,
+			onrendered: function(canvas) { 
+			canvas.id = "mycanvas";
+			//document.body.appendChild(canvas); 
+			//生成base64图片数据 
+			var dataUrl = canvas.toDataURL();
+			var newImg = document.createElement("img");
+			newImg.src = dataUrl;
+			document.body.appendChild(newImg); 
+	 } 
+ });
+	
+	});
+
+});
+
+</script>
+</head>
+<body>
+<div id="content" style="width:150px;height:150px;border:1px lightblue solid">
+	<span> Hello World</span>
+	<br>
+	<span><H2>Are you hear Me?</H2></span>
+</div>
+<button id="btnSave">Save </button>
+
+
+</body>
+</html>

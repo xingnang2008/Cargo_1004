@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Cargo_1004"
+  id="myeclipse.1438871396089"
+  context-root="/cargo_1004"
+  j2ee-spec="5.0"
+  archive="Cargo_1004.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

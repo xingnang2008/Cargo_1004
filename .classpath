@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/myHibernate4.2.19"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/myJson2.4"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/myPOI-3.12"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/mySpring-3.2.14"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/struts2-spring-plugin2.3.24"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/myStruts2.3.24"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/slf4j-log4j"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/md5-commons-codec1.1"/>
+	<classpathentry kind="lib" path="E:/MyJar/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mySpringSecurity3.2.9"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jstl1.1.2"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

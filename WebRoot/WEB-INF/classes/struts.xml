@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+   
+     <package  name="admin" namespace="/admin" extends="json-default">
+       
+         <action name="*_*" class="com.cargo.action.{1}Action" method="{2}">          
+    		<!-- 注意下面的顺序，先name="jsonMap" 而后才是type -->		
+    		
+    		
+    		<result>/admin/{1}_{2}.jsp</result>
+    		
+         </action>
+         
+        
+    </package>
+   
+    <package name="rebate" namespace="/admin/Rebate" extends="json-default">
+    	 <action name="Rebate-*" class="com.cargo.action.RebateAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Rebate/Rebate_{1}.jsp</result>
+    		<result name="input">/admin/Rebate/Rebate_{1}.jsp</result>
+    		<result name="ERROR">/admin/Rebate/Rebate_error.jsp</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>
+    		<result name="download" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">filename="${fileName}"</param>
+    			<param name="inputName">downRebateReport</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>   
+         </action>
+    </package>
+    <package name="waybill" namespace="/admin/Waybill" extends="json-default">
+    	 <action name="Waybill-*" class="com.cargo.action.WaybillAction" method="{1}">          
+    		
+    		<result>/admin/Waybill/Waybill_success.jsp</result>
+    		<result name="input">/admin/Waybill/Waybill_{1}.jsp</result>
+    		<result name="ERROR">/admin/Waybill/Waybill_error.jsp</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    			<param name="includeProperties">
+    				\[\d+\]\.waybill,\[\d+\]\.sender,\[\d+\]\.custId,\[\d+\]\.custName,\[\d+\]\.raterName,\[\d+\]\.weight,\[\d+\]\.worth,\[\d+\]\.goods,\[\d+\]\.mark,\[\d+\]\.outPrice,\[\d+\]\.price,\[\d+\]\.outWorth,\[\d+\]\.procurator,\[\d+\]\.raterRate
+    			</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>
+    		
+    		<result name="download" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="OuterExcel.xls"</param>
+    			<param name="inputName">downloadFile</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result> 
+    		<result name="downreport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downReport</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>
+    		<result name="downMakePrice" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downMakePrice</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>  
+    		<result name="downloadCaiReport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downCaiReport</param>
+    			<param name="buffeSize">8192</param>    			
+    		</result>   
+    		  <result name="downloadRaterReport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downRaterReport</param>
+    			<param name="buffeSize">8192</param>    			
+    		</result> 
+    		 <result name="advanceReport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">advanceReport</param>
+    			<param name="buffeSize">8192</param>    			
+    		</result> 
+    		 <result name="downloadAllBitchReport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">allBitchReport</param>
+    			<param name="buffeSize">8192</param>    			
+    		</result> 
+    		 <result name="downloadTrackReport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downTrackReport</param>
+    			<param name="buffeSize">8192</param>    			
+    		</result>
+    		 <result name="downloadArrearagesReport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downArrearagesReport</param>
+    			<param name="buffeSize">8192</param>    			
+    		</result>         
+         </action>
+    </package>
+    <package name="customer" namespace="/admin/Customer" extends="json-default">
+    	 <action name="Customer-*" class="com.cargo.action.CustomerAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Customer/Customer_{1}.jsp</result>
+    		<result name="input">/admin/Customer/Customer_{1}.jsp</result>
+    		<result name="ERROR">/admin/Customer/Customer_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    			<param name="excludeProperties">
+    				\[\d+\]\.email,\[\d+\]\.remarks
+    			</param>
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+     <package name="rebatecustomer" namespace="/admin/Rebatecustomer" extends="json-default">
+    	 <action name="Rebatecustomer-*" class="com.cargo.action.RebatecustomerAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Rebatecustomer/Rebatecustomer_{1}.jsp</result>
+    		<result name="input">/admin/Rebatecustomer/Rebatecustomer_{1}.jsp</result>
+    		<result name="ERROR">/admin/Rebatecustomer/Rebatecustomer_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+     <package name="status" namespace="/admin/Status" extends="json-default">
+    	 <action name="Status-*" class="com.cargo.action.StatusAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Status/Status_{1}.jsp</result>
+    		<result name="input">/admin/Status/Status_{1}.jsp</result>
+    		<result name="ERROR">/admin/Status/Status_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    			<param name="excludeProperties">
+    				\[\d+\]\.email,\[\d+\]\.remarks
+    			</param>
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="customerRelation" namespace="/admin/CustomerRelation" extends="json-default">
+    	 <action name="CustomerRelation-*" class="com.cargo.action.CustomerRelationAction" method="{1}">          
+    		
+    		<result>/admin/CustomerRelation/CustomerRelation_{1}.jsp</result>
+    		<result name="input">/admin/CustomerRelation/CustomerRelation_{1}.jsp</result>
+    		<result name="ERROR">/admin/CustomerRelation/CustomerRelation_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    			<param name="excludeProperties">
+    				\[\d+\]\.email,\[\d+\]\.remarks
+    			</param>
+    		</result>
+    		<result name="custList" type="json">
+    			<param name="root">custList</param>
+    			
+    		</result>
+    		<result name="raterList" type="json">
+    			<param name="root">raterList</param>
+    			
+    		</result>
+    		<result name="procuratorList" type="json">
+    			<param name="root">procuratorList</param>
+    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="rebategoods" namespace="/admin/Rebategoods" extends="json-default">
+    	 <action name="Rebategoods-*" class="com.cargo.action.RebategoodsAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Rebategoods/Rebategoods_{1}.jsp</result>
+    		<result name="input">/admin/Rebategoods/Rebategoods_{1}.jsp</result>
+    		<result name="ERROR">/admin/Rebategoods/Rebategoods_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    			<param name="excludeProperties">
+    				\[\d+\]\.address,\[\d+\]\.city,\[\d+\]\.email,\[\d+\]\.remarks
+    			</param>
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="bitch" namespace="/admin/Bitch" extends="json-default">
+    	 <action name="Bitch-*" class="com.cargo.action.BitchAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Bitch/Bitch_{1}.jsp</result>
+    		<result name="input">/admin/Bitch/Bitch_{1}.jsp</result>
+    		<result name="ERROR">/admin/Bitch/Bitch_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+     <package name="transType" namespace="/admin/Transtype" extends="json-default">
+    	 <action name="Transtype-*" class="com.cargo.action.TranstypeAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Transtype/Transtype_{1}.jsp</result>
+    		<result name="input">/admin/Transtype/Transtype_{1}.jsp</result>
+    		<result name="ERROR">/admin/Transtype/Transtype_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="dest" namespace="/admin/Dest" extends="json-default">
+    	 <action name="Dest-*" class="com.cargo.action.DestAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Dest/Dest_{1}.jsp</result>
+    		<result name="input">/admin/Dest/Dest_{1}.jsp</result>
+    		<result name="ERROR">/admin/Dest/Dest_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+     <package name="sender" namespace="/admin/Sender" extends="json-default">
+    	 <action name="Sender-*" class="com.cargo.action.SenderAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Sender/Sender_{1}.jsp</result>
+    		<result name="input">/admin/Sender/Sender_{1}.jsp</result>
+    		<result name="ERROR">/admin/Sender/Sender_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+     <package name="line" namespace="/admin/Line" extends="json-default">
+    	 <action name="Line-*" class="com.cargo.action.LineAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Line/Line_{1}.jsp</result>
+    		<result name="input">/admin/Line/Line_{1}.jsp</result>
+    		<result name="ERROR">/admin/Line/Line_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="mark" namespace="/admin/Mark" extends="json-default">
+    	 <action name="Mark-*" class="com.cargo.action.MarkAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Mark/Mark_{1}.jsp</result>
+    		<result name="input">/admin/Mark/Mark_{1}.jsp</result>
+    		<result name="ERROR">/admin/Mark/Mark_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="rater" namespace="/admin/Rater" extends="json-default">
+    	 <action name="Rater-*" class="com.cargo.action.RaterAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Rater/Rater_{1}.jsp</result>
+    		<result name="input">/admin/Rater/Rater_{1}.jsp</result>
+    		<result name="ERROR">/admin/Rater/Rater_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="procurator" namespace="/admin/Procurator" extends="json-default">
+    	 <action name="Procurator-*" class="com.cargo.action.ProcuratorAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Procurator/Procurator_{1}.jsp</result>
+    		<result name="input">/admin/Procurator/Procurator_{1}.jsp</result>
+    		<result name="ERROR">/admin/Procurator/Procurator_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="track" namespace="/admin/Track" extends="json-default">
+    	 <action name="Track-*" class="com.cargo.action.TrackAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/success.jsp</result>
+    		<result name="input">/admin/Track/Track_{1}.jsp</result>
+    		<result name="ERROR">/admin/Track/Track_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    
+    		<result name="downStream" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downStream</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>		
+    		
+         </action>
+    </package>
+     <package name="receipt" namespace="/admin/Receipt" extends="json-default">
+    	 <action name="Receipt-*" class="com.cargo.action.ReceiptAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/success.jsp</result>
+    		<result name="input">/admin/Receipt/Receipt_{1}.jsp</result>
+    		<result name="ERROR">/admin/Receipt/Receipt_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="indemnify" namespace="/admin/Indemnify" extends="json-default">
+    	 <action name="Indemnify-*" class="com.cargo.action.IndemnifyAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/success.jsp</result>
+    		<result name="input">/admin/Indemnify/Indemnify_{1}.jsp</result>
+    		<result name="ERROR">/admin/Indemnify/Indemnify_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		 <result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>   
+    		<result name="downStream" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downStream</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result> 		
+    		
+         </action>
+    </package>
+     <package name="delayRecord" namespace="/admin/DelayRecord" extends="json-default">
+    	 <action name="DelayRecord-*" class="com.cargo.action.DelayRecordAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/success.jsp</result>
+    		<result name="input">/admin/DelayRecord/DelayRecord_{1}.jsp</result>
+    		<result name="ERROR">/admin/DelayRecord/DelayRecord_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+    <package name="phototest" namespace="/admin/PhotoTest" extends="json-default">
+    	 <action name="PhotoTest-*" class="com.cargo.action.PhotoTestAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/success.jsp</result>
+    		<result name="input">/admin/PhotoTest/PhotoTest_{1}.jsp</result>
+    		<result name="ERROR">/admin/error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		
+         </action>
+    </package>
+     <package name="quote" namespace="/admin/Quote" extends="json-default">
+    	 <action name="Quote-*" class="com.cargo.action.QuoteAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/Quote/Quote_success.jsp</result>
+    		<result name="input">/admin/Quote/Quote_{1}.jsp</result>
+    		<result name="ERROR">/admin/Quote/Quote_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		<result name="downreport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downReport</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>
+         </action>
+    </package>
+     <package name="huiQuote" namespace="/admin/HuiQuote" extends="json-default">
+    	 <action name="HuiQuote-*" class="com.cargo.action.HuiQuoteAction" method="{1}">          
+    	    	
+    		
+    		<result>/admin/HuiQuote/HuiQuote_success.jsp</result>
+    		<result name="input">/admin/HuiQuote/HuiQuote_{1}.jsp</result>
+    		<result name="ERROR">/admin/HuiQuote/HuiQuote_error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>    		
+    		<result name="downreport" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+    			<param name="inputName">downReport</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>
+         </action>
+    </package>
+</struts>
